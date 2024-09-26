@@ -1,7 +1,7 @@
 <?php
 include("conexao.php");
  
-if (isset($_POST["Usuario"], $_POST["Nome"], $_POST["Senha"], $_POST["Saldo"])) {
+/*if (isset($_POST["Usuario"], $_POST["Nome"], $_POST["Senha"], $_POST["Saldo"])) {
  
     // Sanitizando as entradas para evitar SQL Injection
     $Usuario = ( $_POST["Usuario"]);
@@ -13,6 +13,12 @@ if (isset($_POST["Usuario"], $_POST["Nome"], $_POST["Senha"], $_POST["Saldo"])) 
  
     $res = mysqli_query($Mysql, $sql);
     
+    if(!empty($_POST['id'])){
+        $sql = "DELETE FROM contas WHERE id=".$_POST['id'];
+        $Mysql -> query ($sql);
+    }
+
+    
     if ($res) {
         echo "Registro gravado com sucesso!";
         header("Location: Exibir-Usuarios.php");
@@ -23,5 +29,5 @@ if (isset($_POST["Usuario"], $_POST["Nome"], $_POST["Senha"], $_POST["Saldo"])) 
     mysqli_close($Mysql);
 } else {
     echo "Por favor, preencha todos os campos!";
-}
+}*/
 ?>

@@ -11,5 +11,5 @@
     if($Mysql -> connect_error){
         die("Connection failed:".$Mysql->connect_error);
     }
-    echo"Conectado com Sucesso!!!";
+    echo"";
 ?>
