@@ -3,14 +3,14 @@
 <?php
     include("conexao.php");
  
-    // Variáveis do formulário
+
     $id = '';
     $nome = '';
     $usuario = '';
     $senha = '';
     $saldo = '';
  
-    // Excluindo dados se o ID for enviado para deletar
+    
     if (!empty($_POST['id']) && isset($_POST['Deletar'])) {
         $sql = "DELETE FROM contas WHERE id=" . $_POST['id'];
         $Mysql->query($sql);
@@ -42,7 +42,7 @@
         }
     }
  
-    // Inserindo novos dados
+
     if (!empty($_POST['nome']) && isset($_POST['Inserir'])) {
         $nome = $_POST["nome"];
         $usuario = $_POST["usuario"];
@@ -53,7 +53,6 @@
         $Mysql->query($sql);
     }
  
-    // Exibindo os dados da tabela
     $sql = "SELECT id, nome, usuario, saldo FROM contas";
     $dados = $Mysql->query($sql);
  
@@ -78,7 +77,6 @@
     echo "</table>";
 ?>
  
-<!-- Formulário para inserção/edição -->
 <form action="index.php" method="POST">
     <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
     Nome: <input type="text" name="nome" value="<?php echo $nome; ?>"><br>

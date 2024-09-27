@@ -1,0 +1,42 @@
+#inserir{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+#Formulario{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Espaçamento entre os campos */
+.mb-3 {
+    margin-bottom: 15px;
+}
+ 
+/* Botão de envio */
+#Botao_Inserir {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+}
+ 
+/* Alterar cor de fundo do botão */
+button.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+#Tabela{
+    position: absolute;
+    display: flex;
+    top: 30px;
+}
+.inputs{
+    border: 0px;
+    background-color: transparent;
+    text-decoration: underline;
+}

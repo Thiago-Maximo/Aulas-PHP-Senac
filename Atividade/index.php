@@ -1,7 +1,7 @@
 <Html>
-    <link rel="stylesheet" href="Atividade-Banco-Css.css">
+    <link rel="stylesheet" href="Atividade-Banco-Css.">
 <body>
-<form class="form" action="Atividade-Banco-VerificaLogin.php" method="POST">
+<form class="form" action="Atividade/Verifica.php" method="POST">
        <p class="form-title">Sign in to your account</p>
         <div class="input-container">
           <input type="email" placeholder="Enter email" name="Email" required>

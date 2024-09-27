@@ -58,13 +58,13 @@ if ($_SESSION['tentativas'] >= 3) {
              setTimeout(function() {
                  document.getElementById('Confirmar').disabled = false; // Habilita após 10 segundos
              }, 10000);
-             window.location.href = 'index.php';
+             window.location.href = 'Atividade/index.php';
           </script>";
     exit();
 }
 
 echo "<script>
          alert('Erro ao Efetuar Login! Você tem " . (3 - $_SESSION['tentativas']) . " tentativas restantes.');
-         window.location.href = 'index.php';
+         window.location.href = 'Atividade/index.php';
       </script>";
 ?>
