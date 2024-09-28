@@ -1,4 +1,57 @@
-<?php include("conexao.php") ?>
+<?php
+    include("conexao.php");
+
+    $id = "";
+    $filme = "";
+    $genero = "";
+    $indicacao = "";
+    $lancamento = "";
+    $duracao = "";
+    $diretor = "";
+    $produtora = "";
+    $valor = "";
+
+     // Carregando dados do banco para o formulário ao clicar em "Atualizar"
+     if (isset($_POST['Atualizar']) && !empty($_POST['id'])) {
+        $id = $_POST['id'];
+        $sql = "SELECT * FROM produtos WHERE id=" . $id;
+        $resultado = $Mysql->query($sql);
+ 
+        if ($row = $resultado->fetch_assoc()) {
+            $id = $row["id"];
+            $filme = $row["filme"];
+            $genero = $row["genero"];
+            $indicacao = $row["indicacao"];
+            $lancamento = $row["lancamento"];
+            $duracao = $row["duracao"];
+            $diretor = $row["diretor"];
+            $produtora = $row["produtora"];
+            $valor = $row["valor"];
+        }
+    }
+
+    // Atualizando dados quando o formulário de edição for submetido
+    if (isset($_POST['Alterar']) && !empty($_POST['id'])) {
+            $id = $_POST['id'];
+            $filme = $_POST['filme'];
+            $genero = $_POST["genero"];
+            $indicacao = $_POST["indicacao"];
+            $lancamento = $_POST["lancamento"];
+            $duracao = $_POST["duracao"];
+            $diretor = $_POST["diretor"];
+            $produtora = $_POST["produtora"];
+            $valor = $_POST["valor"];
+      
+            $query = "UPDATE produtos SET filme = '$filme',genero = '$genero', indicacao='$indicacao',lancamento='$lancamento',duracao='$duracao',diretor='$diretor',produtora='$produtora',valor='$valor' WHERE id = '$id'";
+            $Mysql->query($query);
+      
+            echo "<script>
+                alert('Filme Atualizado com SUCESSO!!!');
+                window.location.href = 'index.php'; 
+            </script>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +64,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form id="Formulario" action ="inserir.php" method="POST">
+        <form id="Formulario" action="atualizar.php" method="POST">
             <div class="row mb-3">
                 <div class="col-6">
                     <input type="text" class="form-control" placeholder="Filme" id="filme" name="filme" value="<?php echo htmlspecialchars($filme); ?>">
@@ -20,7 +73,7 @@
                     <input type="text" class="form-control" placeholder="Gênero" id="genero" name="genero" value="<?php echo htmlspecialchars($genero); ?>">
                 </div>
             </div>
- 
+
             <div class="row mb-3">
                 <div class="col-4">
                     <input type="text" class="form-control" placeholder="Indicação" id="indicacao" name="indicacao" value="<?php echo htmlspecialchars($indicacao); ?>">
@@ -32,7 +85,7 @@
                     <input type="text" class="form-control" placeholder="Duração" id="duracao" name="duracao" value="<?php echo htmlspecialchars($duracao); ?>">
                 </div>
             </div>
- 
+
             <div class="row mb-3">
                 <div class="col-6">
                     <input type="text" class="form-control" placeholder="Diretor" id="diretor" name="diretor" value="<?php echo htmlspecialchars($diretor); ?>">
@@ -41,55 +94,15 @@
                     <input type="text" class="form-control" placeholder="Produtora" id="produtora" name="produtora" value="<?php echo htmlspecialchars($produtora); ?>">
                 </div>
             </div>
- 
+
             <div class="row mb-3">
                 <div class="col-6">
                     <input type="number" class="form-control" placeholder="Valor" id="valor" name="valor" value="<?php echo htmlspecialchars($valor); ?>">
                 </div>
             </div>
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>"><br>
-            <button type="submit" class="btn btn-primary" id="Botao_Inserir" name="Atualizar" value="Atualizar">Atualizar Filme</button>
+            <button type="submit" class="btn btn-primary" id="Botao_Inserir" name="Alterar" value="Alterar">Atualizar Filme</button>
         </form>
     </div>
 </body>
 </html>
-
-<?php
-    // Inicializa variáveis
-    $id = "";
-    $filme = "";
-    $genero = "";
-    $indicacao = "";
-    $lancamento = "";
-    $duracao = "";
-    $diretor = "";
-    $produtora = "";
-    $valor = "";
-
-    // Carregar dados do banco para o formulário ao clicar em "Atualizar"
-    if (isset($_POST['Atualizar']) && !empty($_POST['id'])) {
-        $id = (int)$_POST['id'];  // Sanitiza o ID
-        $sql = "SELECT * FROM produtos WHERE id = $id";
-        $resultado = $Mysql->query($sql);
-    
-        if ($resultado === false) {
-            // Exibe o erro da consulta SQL
-            echo "Erro na consulta SQL: " . $Mysql->error;
-        } else {
-            if ($resultado->num_rows > 0) {
-                if ($row = $resultado->fetch_assoc()) {
-                    $filme = htmlspecialchars($row["filme"]);
-                    $genero = htmlspecialchars($row["genero"]);
-                    $indicacao = htmlspecialchars($row["indicacao"]);
-                    $lancamento = htmlspecialchars($row["lancamento"]);
-                    $duracao = htmlspecialchars($row["duracao"]);
-                    $diretor = htmlspecialchars($row["diretor"]);
-                    $produtora = htmlspecialchars($row["produtora"]);
-                    $valor = htmlspecialchars($row["valor"]);
-                }
-            } else {
-                echo "Nenhum registro encontrado com o ID fornecido.";
-            }
-        }
-    }
-?>

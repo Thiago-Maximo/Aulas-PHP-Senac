@@ -40,3 +40,8 @@ button.btn-primary {
     background-color: transparent;
     text-decoration: underline;
 }
+
+.link{
+    text-decoration: none;
+    color: black;
+}
