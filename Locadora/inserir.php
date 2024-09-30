@@ -29,7 +29,7 @@
                     <input type="text" class="form-control" placeholder="Lançamento" id="lancamento" name="lancamento">
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Duração" id="duracao" name="duracao">
+                    <input type="text" class="form-control" placeholder="Duração: Ex 01:30:00" id="duracao" name="duracao">
                 </div>
             </div>
  
@@ -54,6 +54,7 @@
 </body>
 </html>
 <?php
+    $id = "";
     $filme = "";
     $genero = "";
     $indicacao = "";
