@@ -1,6 +1,6 @@
-<?php
-
-?>
+<?php 
+include("topo.php");
+include("conexao.php");?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,34 +13,44 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link type="image/png" sizes="16x16" rel="icon" href="PetShop/img/favicon.svg">
     <title>Pet-Shop</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand" id="navegacao">
-        <div class="container-fluid justify-content-center ">
-        <ul class="navbar-nav nav-pills ">
-        <li class="nav-item">
-            <a href="#" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cães</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li>
-                    <a href="#" class="dropdown-item">Ração Premium</a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">Gatos</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">Produtos</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">Serviços</a>
-        </li>
-        </ul>
-        </div>
-    </nav>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active ">
+      <img class="d-block w-100" src="img/Pet-Store.jpg" alt="First slide" class="imagens">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/Propaganda.jpg" alt="Second slide" class="imagens">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/Pet-Food.jpg" alt="Third slide" class="imagens">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+</div>
+
+<!-- Script para garantir o funcionamento do carrossel -->
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel({
+      interval: 2000 // Define o intervalo para 2 segundos entre os slides
+    });
+  });
+</script>
 </body>
 </html>

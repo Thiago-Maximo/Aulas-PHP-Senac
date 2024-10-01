@@ -1,6 +1,91 @@
-#navegacao{
-    
-}
-.a{
 
+#Botao-Pesquisa{
+    background-color: beige;
+}
+#Lupa-Pesquisa{
+    position: relative;
+    left: -20px;
+}
+/* Estilo padrão para links */
+a.nav-link, a.dropdown-item {
+    color: black;
+    text-decoration: none;
+}
+
+/* Ao passar o mouse, o link fica sublinhado */
+a.nav-link:hover, a.dropdown-item:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Quando um item do dropdown for selecionado (ativo) ou clicado, o fundo será branco e as letras pretas */
+a.dropdown-item.active, a.dropdown-item:active,
+a.dropdown-item:focus, a.dropdown-item.show {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Ao clicar na opção do dropdown, a cor de fundo será branca e o texto preto */
+.show > a.nav-link.dropdown-toggle {
+    background-color: white !important;
+    color: black !important;
+}
+.volta-pagina{
+    text-decoration: underline;
+    color: black;
+}
+
+
+
+/******************** fim hero menu ********************/
+
+.cards {
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.cards h2 {
+    margin: 50px 0;
+}
+
+.cards-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 30px;
+
+}
+
+.card-item {
+    width: 37%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 1px 1px 30px #ccc;
+    border-radius: 7px;
+    transition: scale .7s;    
+}
+
+.card-item:hover {
+    scale: 1.1;
+}
+
+.card-item img {
+    width: 80%;
+    border-radius: 7px;
+}
+
+.card-item h3 {
+    font-size: 20px;
+}
+
+.card-item p {
+    width: 80%;
+    text-wrap: balance;
 }
