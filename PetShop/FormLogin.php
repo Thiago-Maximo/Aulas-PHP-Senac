@@ -1,3 +1,29 @@
+<?php
+    include("conexao.php");
+    session_start();
+
+    if(isset($_POST['btn-entrar'])){
+        $erros = array();
+        $email = pdo_escape_string($Mysql, $_POST['email']);
+        $senha = pdo_escape_string($Mysql, $_POST['senha']);
+
+        if(empty($email) or empty($senha)){
+            $erros = "<li>Preencha todos os Campos</li>";
+        } else{
+            $sql = "SELECT email FROM usuarios WHERE email = '$email'";
+            $resultado = query($Mysql,$sql);
+
+            if(pdo_num_rows($resultado)>0){
+                
+            }else{
+                 $erros[] = echo "<script>
+                alert('Usuario Inexistente!!!');
+                window.location.href = 'Form-Login.php'; 
+                </script>";
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,7 +71,7 @@
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" required>
             </div>
-            <button type="submit" class="btn btn-custom w-100">CONECTE-SE</button>
+            <button type="submit" class="btn btn-custom w-100" name="btn-entrar" id="btn-entrar">CONECTE-SE</button>
             <div class="text-center mt-3">
                 <a href="#" class="text-light">Esqueceu sua senha?</a>
             </div>
