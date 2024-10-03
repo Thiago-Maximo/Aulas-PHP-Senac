@@ -1,7 +1,17 @@
 <?php
  
 include('conexao.php');
- 
-$delete = "DELETE from produtos where id = 1";
- 
-$retorno = $conexao->exec($delete);
+$nome = "";
+$email = "";
+$senha = "";
+$emailantigo = "";
+
+if (!empty($_GET['email'])) {
+    $sql = "DELETE FROM usuarios WHERE email=" . $_POST['emailantigo'];
+    $Mysql->query($sql);
+
+    echo "<script>
+            alert('Usuario Deletado com SUCESSO!!!');
+            window.location.href = 'listar.php'; 
+        </script>";
+}
