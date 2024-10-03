@@ -5,7 +5,7 @@
     $dbname = "petshop2";
 
     //Iniciando uma conexão mysql
-    $Mysql = new mysqli($servername,$username,$password,$dbname);
+    $Mysql = new Mysqli($servername,$username,$password,$dbname);
 
     //Chegando conexão
     if($Mysql -> connect_error){

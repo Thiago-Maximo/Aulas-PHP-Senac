@@ -35,7 +35,30 @@ a.dropdown-item:focus, a.dropdown-item.show {
     color: black;
 }
 
-
+/* Centraliza os itens de menu no desktop */
+.navbar-nav {
+    margin: 0 auto;
+}
+/* Posição do botão de login no canto direito em telas maiores */
+.login-btn {
+    position: absolute;
+    right: 10px;
+}
+/* Botão de login dentro do menu de sanduíche em telas pequenas */
+@media (max-width: 991.98px) {
+    .login-btn {
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 15px;
+        text-align: center;
+        display: block;
+    }
+}
+/* Coloca o ícone de sanduíche no canto direito */
+.navbar-toggler {
+    margin-left: auto;
+}
 
 /******************** fim hero menu ********************/
 
@@ -89,3 +112,68 @@ a.dropdown-item:focus, a.dropdown-item.show {
     width: 80%;
     text-wrap: balance;
 }
+
+.cards {
+    padding: 20px;
+}
+
+.cards-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaçamento entre os cards */
+}
+
+.card-item {
+    flex: 1 1 250px; /* Largura mínima de 250px e crescimento automático */
+    height: 300px; /* Altura fixa para os cards */
+    background-color: #f8f9fa; /* Cor de fundo dos cards */
+    border: 1px solid #ddd; /* Borda dos cards */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para os cards */
+    display: flex;
+    flex-direction: column; /* Para empilhar o conteúdo verticalmente */
+    justify-content: space-between; /* Distribui o espaço entre os elementos */
+    padding: 15px; /* Espaçamento interno do card */
+}
+
+.card-item img {
+    max-width: 100%; /* Para garantir que a imagem não exceda a largura do card */
+    max-height: 150px; /* Altura máxima da imagem */
+    object-fit: cover; /* Para manter a proporção da imagem */
+    margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+}
+
+.card-item h3 {
+    font-size: 1.25em; /* Tamanho da fonte do título */
+    margin: 10px 0; /* Margem para o título */
+}
+
+.card-item p {
+    flex-grow: 1; /* Faz com que a descrição ocupe o espaço restante */
+    margin: 0; /* Remove margens padrão */
+}
+
+
+
+/* Estilização do carrossel para diminuir o tamanho */
+.carousel {
+    max-width: 80%; /* Reduz a largura do carrossel para 80% da tela */
+    margin: 0 auto; /* Centraliza o carrossel horizontalmente */
+}
+
+.carousel img {
+    max-height: 400px; /* Define uma altura máxima para as imagens */
+    object-fit: cover; /* Faz com que a imagem se ajuste à altura sem distorcer */
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 100%; /* Usa toda a largura da tela em dispositivos móveis */
+    }
+
+    .carousel img {
+        max-height: 250px; /* Reduz a altura máxima das imagens em dispositivos móveis */
+    }
+}
+
