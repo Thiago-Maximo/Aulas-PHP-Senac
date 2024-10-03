@@ -40,7 +40,7 @@
 <body>
     <div class="login-container">
         <h3 class="text-center">Conecte-se!</h3>
-        <form action="login.php" method="POST">
+        <form action="Classe-Login.php" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">@ E-mail</label>
                 <input type="email" class="form-control" id="email" name="email" required>

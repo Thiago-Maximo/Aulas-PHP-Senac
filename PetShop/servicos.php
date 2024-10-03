@@ -2,16 +2,16 @@
 include("topo.php"); 
 include("conexao.php"); 
 
-// Query para buscar dados dos serviços
-$sql = "SELECT nome, descricao FROM servicos"; // Apenas busca nome e descrição
+
+$sql = "SELECT nome, descricao, imagem FROM servicos"; // Apenas busca nome e descrição
 $result = $Mysql->query($sql);
 
 // Array de imagens manualmente definidas
 $imagens = [
-    "Serviço 1" => "img/ração-dog.jpg", // Substitua pelo caminho da sua imagem
-    "Serviço 2" => "img/imagem_servico2.jpg", // Substitua pelo caminho da sua imagem
-    "Serviço 3" => "img/imagem_servico3.jpg", // Substitua pelo caminho da sua imagem
-    // Adicione mais serviços e imagens conforme necessário
+    "Serviço 1" => "img/ração-dog.jpg", 
+    "Serviço 2" => "img/imagem_servico2.jpg", 
+    "Serviço 3" => "img/imagem_servico3.jpg", 
+
 ];
 ?>
 
