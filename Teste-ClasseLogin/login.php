@@ -42,7 +42,7 @@ class Login {
                 $_SESSION['email'] = $email;
                 $_SESSION['senha'] = $senha;
                 var_dump($_SESSION);
-                header("Location: Teste-Login_acesso.php");
+                header("Location: Teste-Login_acessado.php");
                 exit();
             }
         } else {

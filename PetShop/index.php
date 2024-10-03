@@ -1,7 +1,10 @@
-<?php 
+<?php
+session_start();
 include("topo.php");
 include("conexao.php");
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
