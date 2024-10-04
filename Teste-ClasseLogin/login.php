@@ -4,8 +4,7 @@ session_start(); // Certifique-se de iniciar a sessão
 require_once('conexao.php');
 var_dump($_POST);
 echo "<br>";
-var_dump($Mysql);
-echo"<br>";
+
 
 //Classe Responsavel por Autenticar e validar o login do usuario(cliente ou funcionario)
 class Login {
