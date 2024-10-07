@@ -1,0 +1,116 @@
+
+-- Criando o banco de dados
+CREATE DATABASE IF NOT EXISTS petshop;
+USE petshop;
+
+-- Tabela usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo_usuario ENUM('cliente', 'funcionario') NOT NULL
+);
+
+-- Tabela contatos
+CREATE TABLE IF NOT EXISTS contatos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    telefone VARCHAR(15),
+    endereco VARCHAR(255),
+    cidade VARCHAR(100),
+    estado VARCHAR(50),
+    cep VARCHAR(10),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Tabela produtos (com campo de imagem)
+CREATE TABLE IF NOT EXISTS produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10, 2) NOT NULL,
+    estoque INT NOT NULL,
+    imagem VARCHAR(255) -- Adiciona o caminho da imagem
+);
+
+-- Tabela servicos (com campo de imagem)
+CREATE TABLE IF NOT EXISTS servicos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10, 2) NOT NULL,
+    imagem VARCHAR(255) -- Adiciona o caminho da imagem
+);
+
+-- Tabela vendas
+CREATE TABLE IF NOT EXISTS vendas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL,
+    data_venda DATE NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE
+);
+
+-- Tabela agendamentos
+CREATE TABLE IF NOT EXISTS agendamentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    servico_id INT NOT NULL,
+    data_agendamento DATE NOT NULL,
+    horario_agendamento TIME NOT NULL,
+    status ENUM('agendado', 'cancelado', 'concluido') DEFAULT 'agendado',
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (servico_id) REFERENCES servicos(id) ON DELETE CASCADE
+);
+
+-- Inserindo dados na tabela usuarios
+INSERT INTO usuarios (nome, email, senha, tipo_usuario) VALUES
+('Carlos Pereira', 'carlos@cliente.com', 'senha123', 'cliente'),
+('Ana Oliveira', 'ana@cliente.com', 'senha456', 'cliente'),
+('Paulo Silva', 'paulo@funcionario.com', 'funcSenha789', 'funcionario'),
+('Maria Costa', 'maria@cliente.com', 'senha321', 'cliente'),
+('Lucas Ferreira', 'lucas@funcionario.com', 'senhaFunc987', 'funcionario');
+
+-- Inserindo dados na tabela contatos
+INSERT INTO contatos (usuario_id, telefone, endereco, cidade, estado, cep) VALUES
+(1, '11999999999', 'Rua 1, 100', 'São Paulo', 'SP', '01234-567'),
+(2, '21988888888', 'Rua 2, 200', 'Rio de Janeiro', 'RJ', '12345-678'),
+(3, '31977777777', 'Rua 3, 300', 'Belo Horizonte', 'MG', '23456-789'),
+(4, '11966666666', 'Av. 4, 400', 'Curitiba', 'PR', '34567-890'),
+(5, '21955555555', 'Av. 5, 500', 'Porto Alegre', 'RS', '45678-901');
+
+-- Inserindo dados na tabela produtos (com campo de imagem)
+INSERT INTO produtos (nome, descricao, preco, estoque, imagem) VALUES
+('Ração para Cães', 'Ração premium para cães adultos de grande porte.', 120.00, 50, '/imagens/produtos/racao_caes.jpg'),
+('Brinquedo para Gatos', 'Brinquedo interativo com penas e bolinhas.', 25.00, 100, '/imagens/produtos/brinquedo_gatos.jpg'),
+('Shampoo para Animais', 'Shampoo especial para pelagem brilhante.', 40.00, 75, '/imagens/produtos/shampoo_animais.jpg'),
+('Coleira Anti-pulgas', 'Coleira eficaz contra pulgas e carrapatos.', 80.00, 30, '/imagens/produtos/coleira_pulgas.jpg'),
+('Ração para Gatos', 'Ração premium para gatos adultos.', 90.00, 60, '/imagens/produtos/racao_gatos.jpg');
+
+-- Inserindo dados na tabela servicos (com campo de imagem)
+INSERT INTO servicos (nome, descricao, preco, imagem) VALUES
+('Banho', 'Banho completo com produtos especializados.', 50.00, '/imagens/servicos/banho.jpg'),
+('Tosa', 'Tosa completa e modelada.', 70.00, '/imagens/servicos/tosa.jpg'),
+('Consulta Veterinária', 'Consulta com veterinário especializado.', 150.00, '/imagens/servicos/consulta_veterinaria.jpg'),
+('Vacinação', 'Aplicação de vacinas de rotina para cães e gatos.', 120.00, '/imagens/servicos/vacinacao.jpg'),
+('Hidratação de Pelagem', 'Tratamento de hidratação para pelagem brilhante e saudável.', 80.00, '/imagens/servicos/hidratacao_pelagem.jpg');
+
+-- Inserindo dados na tabela vendas
+INSERT INTO vendas (usuario_id, produto_id, quantidade, data_venda, total) VALUES
+(1, 1, 2, '2024-09-28', 240.00),
+(2, 3, 1, '2024-09-29', 40.00),
+(1, 4, 1, '2024-09-30', 80.00),
+(4, 2, 3, '2024-10-01', 75.00),
+(3, 5, 1, '2024-10-02', 90.00);
+
+-- Inserindo dados na tabela agendamentos
+INSERT INTO agendamentos (usuario_id, servico_id, data_agendamento, horario_agendamento, status) VALUES
+(1, 1, '2024-10-05', '10:00:00', 'agendado'),
+(2, 2, '2024-10-06', '11:00:00', 'agendado'),
+(3, 3, '2024-10-07', '09:30:00', 'concluido'),
+(4, 4, '2024-10-08', '14:00:00', 'agendado'),
+(5, 5, '2024-10-09', '16:00:00', 'agendado');

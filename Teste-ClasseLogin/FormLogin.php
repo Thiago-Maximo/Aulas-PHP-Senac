@@ -2,7 +2,6 @@
 include("conexao.php");
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
